@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/DirectoriesFragment"
+        android:title="@string/main_menu_directories"
+        android:contentDescription="@string/main_menu_directories"
+        />
+
+    <item
+        android:id="@+id/PurchaseFragment"
+        android:title="@string/main_menu_purchase"
+        android:contentDescription="@string/main_menu_purchase"
+        />
+
+    <item
+        android:id="@+id/SupplyFragment"
+        android:title="@string/main_menu_supply"
+        android:contentDescription="@string/main_menu_supply"
+        />
+
+    <item
+        android:id="@+id/AccountingFragment"
+        android:title="@string/main_menu_accounting"
+        android:contentDescription="@string/main_menu_accounting"
+        />
+
+    <item
+        android:id="@+id/sales"
+        android:title="@string/main_menu_sales">
+        <menu>
+            <item
+                android:id="@+id/SalesToPharmacyFragment"
+                android:title="@string/main_menu_sales_to_pharmacy"
+                android:contentDescription="@string/main_menu_sales_to_pharmacy"
+                />
+
+            <item
+                android:id="@+id/SalesByPharmacyFragment"
+                android:title="@string/main_menu_sales_by_pharmacy"
+                android:contentDescription="@string/main_menu_sales_by_pharmacy"
+                />
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">MedMobile</string>
+    <string name="show">Посмотреть</string>
+    <string name="edit">Редактировать</string>
+    <string name="OK">OK</string>
+    <string name="add">Добавить</string>
+
+    <!--LogInActivity strings-->
+    <string name="login_title">Вход в систему</string>
+    <string name="login_hint">Логин</string>
+    <string name="password_hint">Пароль</string>
+    <string name="login_button_text">Войти</string>
+
+    <string name="empty_login_error">Введите логин</string>
+    <string name="empty_password_error">Введите пароль</string>
+
+
+    <!--main menu strings-->
+    <string name="main_menu_directories">Справочники</string>
+    <string name="main_menu_purchase">Закупки</string>
+    <string name="main_menu_sales">Продажи</string>
+    <string name="main_menu_sales_to_pharmacy">Продажи аптекам</string>
+    <string name="main_menu_sales_by_pharmacy">Продажи аптек</string>
+    <string name="main_menu_supply">Снабжение</string>
+    <string name="main_menu_accounting">Отчётность</string>
+
+    <!--Fragment label-->
+    <string name="users_label">Пользователи</string>
+    <string name="create_user_label">Создание пользователя</string>
+
+    <!--Directories Activity String-->
+    <string name="remedy_producers">Производительи лекарств</string>
+    <string name="remedies">Лекарства</string>
+    <string name="pharmacies">Аптеки</string>
+    <string name="users">Пользователи</string>
+
+
+    <!--User rv item string-->
+    <string name="user_login_text">Логин: %s</string>
+    <string name="user_phone_text">Телефон: %d</string>
+    <string name="user_role_text">Роль: %s</string>
+
+    <!--User creation fragment strings-->
+    <string name="user_login_hint">Логин</string>
+    <string name="user_login_error">Логин должен быть не менее 3 символов</string>
+
+    <string name="user_password_hint">Пароль</string>
+    <string name="user_password_error">Пароль должен быть от 8 до 50 символов</string>
+
+    <string name="user_name_hint">ФИО</string>
+    <string name="user_name_error">ФИО должно быть не менее 3 символов</string>
+
+    <string name="user_role_hint">Роль</string>
+    <string name="user_role_error">Нужно выбрать роль</string>
+
+    <string name="user_phone_hint">Телефон</string>
+    <string name="user_phone_error">Введите телефон</string>
+
+    <string name="create_user_button">Создать пользователя</string>
+    <string name="user_created_snackbar_text">%s Успешно создан</string>
+
+    <array name="role_array">
+        <item>DIRECTOR</item>
+        <item>OPERATOR</item>
+        <item>ACCOUNTANT</item>
+        <item>SUPPLIER</item>
+    </array>
+
+</resources>
