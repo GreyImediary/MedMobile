@@ -1,4 +1,4 @@
-package com.example.medmobile.ui
+package com.example.medmobile.ui.adapters
 
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,11 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
     val users: MutableList<User> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        UserViewHolder(parent.inflate(R.layout.item_user))
+        UserViewHolder(
+            parent.inflate(
+                R.layout.item_user
+            )
+        )
 
     override fun getItemCount() = users.size
 
