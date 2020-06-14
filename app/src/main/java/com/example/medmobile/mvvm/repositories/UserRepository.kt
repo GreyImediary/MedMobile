@@ -9,13 +9,13 @@ import com.example.medmobile.mvvm.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class UserRepository(private val userApi: UserApi, private val pageHelper: PageHelper) :
+class UserRepository(private val api: UserApi, private val pageHelper: PageHelper) :
     BaseCrudRepository<User, PostUser> {
 
     override suspend fun create(token: String, postModel: PostUser): User =
         withContext(Dispatchers.IO) {
             try {
-                userApi.createUser(token, postModel)
+                api.createUser(token, postModel)
             } catch (t: Throwable) {
                 Log.e("UserRepository", t.message ?: "no message")
                 throw IllegalArgumentException("Не удалось создать пользователя. Проверьте введённые данные")
@@ -27,14 +27,14 @@ class UserRepository(private val userApi: UserApi, private val pageHelper: PageH
             try {
                 when {
                     pageHelper.total == 0 -> {
-                        val pageData = userApi.users(token, offset = pageHelper.offset)
+                        val pageData = api.users(token, offset = pageHelper.offset)
                         pageHelper.total += pageData.total
                         pageHelper.currentSize += pageData.data.size
                         pageHelper.offset += 10
                         pageData.data
                     }
                     pageHelper.currentSize < pageHelper.total -> {
-                        val pageData = userApi.users(token, offset = pageHelper.offset)
+                        val pageData = api.users(token, offset = pageHelper.offset)
                         pageHelper.offset += 10
                         pageHelper.currentSize += pageData.data.size
                         pageData.data
@@ -52,7 +52,7 @@ class UserRepository(private val userApi: UserApi, private val pageHelper: PageH
 
     override suspend fun readById(token: String, id: Int): User = withContext(Dispatchers.IO) {
         try {
-            userApi.userById(token, id)
+            api.userById(token, id)
         } catch (t: Throwable) {
             Log.e("UserRepository", t.message ?: "no message")
             throw NetworkErrorException("Не удалось получить пользователя")
@@ -69,10 +69,10 @@ class UserRepository(private val userApi: UserApi, private val pageHelper: PageH
 
     override suspend fun delete(token: String, id: Int): User = withContext(Dispatchers.IO) {
         try {
-            userApi.delete(token, id)
+            api.delete(token, id)
         } catch (t: Throwable) {
             Log.e("UserRepository", t.message ?: "no message")
-            throw NetworkErrorException("Не удалось получить пользователя")
+            throw NetworkErrorException("Не удалось удалить пользователя")
         }
     }
 }
