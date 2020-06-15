@@ -2,18 +2,18 @@ package com.example.medmobile.ui.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.medmobile.R
 import com.example.medmobile.constants.TOKEN_PREF
+import com.example.medmobile.inflate
 import com.example.medmobile.mvvm.viewModels.UserViewModel
 import com.example.medmobile.toast
 import com.example.medmobile.ui.adapters.UsersAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_users.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -31,8 +31,18 @@ class UsersFragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_users, null)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().toolbar.apply {
+            menu.clear()
+            inflateMenu(R.menu.menu_add)
+        }
 
         val token = prefs.getString(TOKEN_PREF, "") ?: ""
 
@@ -76,8 +86,16 @@ class UsersFragment : BaseFragment() {
     override fun setOnClickListeners() {
         super.setOnClickListeners()
 
-        user_add_button.setOnClickListener {
-            findNavController().navigate(R.id.action_usersFragment_to_createUserFragment)
+        requireActivity().toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_add_item -> {
+                    findNavController().navigate(R.id.action_usersFragment_to_createUserFragment)
+                    true
+                }
+                else -> {
+                    true
+                }
+            }
         }
     }
 }
