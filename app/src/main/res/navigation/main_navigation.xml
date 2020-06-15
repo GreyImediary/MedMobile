@@ -15,6 +15,9 @@
             app:exitAnim="@anim/fragment_fade_exit"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_DirectoriesFragment_to_manufacturerFragment"
+            app:destination="@id/manufacturerFragment" />
     </fragment>
     <fragment
         android:id="@+id/PurchaseFragment"
@@ -48,4 +51,16 @@
         android:id="@+id/createUserFragment"
         android:name="com.example.medmobile.ui.fragments.CreateUserFragment"
         android:label="@string/create_user_label" />
+    <fragment
+        android:id="@+id/manufacturerFragment"
+        android:name="com.example.medmobile.ui.fragments.ManufacturerFragment"
+        android:label="@string/manufacturers_label" >
+        <action
+            android:id="@+id/action_manufacturerFragment_to_createManufacturerFragment"
+            app:destination="@id/createManufacturerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createManufacturerFragment"
+        android:name="com.example.medmobile.ui.fragments.CreateManufacturerFragment"
+        android:label="CreateManufacturerFragment" />
 </navigation>
