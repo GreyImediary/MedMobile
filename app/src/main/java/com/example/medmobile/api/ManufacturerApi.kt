@@ -28,7 +28,7 @@ interface ManufacturerApi {
         @Body postManufacturer: PostManufacturer
     ): Manufacturer
 
-    @POST("/user/{id}")
+    @POST("/manufacturer/{id}")
     suspend fun delete(
         @Header("Authorization") token: String,
         @Path("id") id: Int
