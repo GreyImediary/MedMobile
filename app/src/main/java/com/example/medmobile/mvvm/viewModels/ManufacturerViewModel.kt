@@ -67,8 +67,10 @@ class ManufacturerViewModel(private val repository: ManufacturerRepository) : Vi
     override fun delete(token: String, id: Int) {
         viewModelScope.launch {
             try {
-                val manufacturer = repository.delete(token, id)
-                deletedManufacturer.value = "${manufacturer.title} удалён"
+                val result = repository.delete(token, id)
+                if (result.affected == 1) {
+                    deletedManufacturer.value = "Производитель удалён"
+                }
             } catch (e: NetworkErrorException) {
                 errorMessage.value = e.message
             }

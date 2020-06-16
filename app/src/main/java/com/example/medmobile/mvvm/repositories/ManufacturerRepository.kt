@@ -3,6 +3,7 @@ package com.example.medmobile.mvvm.repositories
 import android.accounts.NetworkErrorException
 import android.util.Log
 import com.example.medmobile.api.ManufacturerApi
+import com.example.medmobile.mvvm.model.DeleteResult
 import com.example.medmobile.mvvm.model.Manufacturer
 import com.example.medmobile.mvvm.model.PageHelper
 import com.example.medmobile.mvvm.model.PostManufacturer
@@ -10,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ManufacturerRepository(private val api: ManufacturerApi, private val pageHelper: PageHelper) :
-    BaseCrudRepository<Manufacturer, PostManufacturer> {
+    BaseCrudRepository<Manufacturer, PostManufacturer, DeleteResult> {
 
     override suspend fun create(token: String, postModel: PostManufacturer): Manufacturer =
         withContext(Dispatchers.IO) {
@@ -58,7 +59,7 @@ class ManufacturerRepository(private val api: ManufacturerApi, private val pageH
         }
     }
 
-    override suspend fun delete(token: String, id: Int): Manufacturer = withContext(Dispatchers.IO) {
+    override suspend fun delete(token: String, id: Int): DeleteResult = withContext(Dispatchers.IO) {
         try {
             api.delete(token, id)
         } catch (t: Throwable) {

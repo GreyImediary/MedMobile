@@ -1,5 +1,6 @@
 package com.example.medmobile.api
 
+import com.example.medmobile.mvvm.model.DeleteResult
 import com.example.medmobile.mvvm.model.Manufacturer
 import com.example.medmobile.mvvm.model.PageData
 import com.example.medmobile.mvvm.model.PostManufacturer
@@ -31,5 +32,5 @@ interface ManufacturerApi {
     suspend fun delete(
         @Header("Authorization") token: String,
         @Path("id") id: Int
-    ): Manufacturer
+    ): DeleteResult
 }
