@@ -45,7 +45,7 @@ class CreateManufacturerFragment : BaseFragment() {
         })
 
         viewModel.createdManufacturer.observe(viewLifecycleOwner, Observer {
-            val message = getString(R.string.manufacturer_created_snackbar_text, it)
+            val message = getString(R.string.manufacturer_created_snackbar_text, it.title)
 
             val snackbar = Snackbar.make(
                 create_manuf_button,

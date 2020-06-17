@@ -17,19 +17,19 @@
             android:padding="@dimen/medium_margin">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_manuf_title"
+                android:id="@+id/input_medicine_title"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/small_margin"
-                android:hint="@string/manufacturer_name_hint"
+                android:hint="@string/medicine_title_hint"
                 app:errorEnabled="true"
-                app:layout_constraintBottom_toTopOf="@id/input_manuf_inn"
+                app:layout_constraintBottom_toTopOf="@id/input_medicine_price"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_manuf_name"
+                    android:id="@+id/edit_medicine_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -39,79 +39,104 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_manuf_inn"
+                android:id="@+id/input_medicine_price"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/small_margin"
-                android:hint="@string/manufacturer_inn_hint"
+                android:hint="@string/medicine_price_hint"
                 app:errorEnabled="true"
-                app:layout_constraintBottom_toTopOf="@id/input_manuf_phone"
-                app:layout_constraintTop_toBottomOf="@id/input_manuf_title"
+                app:layout_constraintBottom_toTopOf="@id/input_medicine_type"
+                app:layout_constraintTop_toBottomOf="@id/input_medicine_title"
                 app:layout_constraintVertical_chainStyle="packed">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_manuf_inn"
+                    android:id="@+id/edit_medicine_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:digits="0123456789."
+                    android:inputType="number"
                     android:maxLines="1"
                     android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_manuf_phone"
+                android:id="@+id/input_medicine_type"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:hint="@string/medicine_type_hint"
+                android:labelFor="@id/edit_user_role"
+                app:errorEnabled="true"
+                app:layout_constraintBottom_toTopOf="@id/input_medicine_price"
+                app:layout_constraintTop_toBottomOf="@id/input_medicine_creator_id">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edit_medicine_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_medicine_creator_id"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/small_margin"
-                android:hint="@string/manufacturer_phone_hint"
+                android:hint="@string/medicine_creator_id_hint"
                 app:errorEnabled="true"
-                app:layout_constraintBottom_toTopOf="@id/input_manuf_address"
-                app:layout_constraintTop_toBottomOf="@id/input_manuf_inn"
+                app:layout_constraintBottom_toTopOf="@id/input_medicine_desc"
+                app:layout_constraintTop_toBottomOf="@id/input_medicine_type"
                 app:layout_constraintVertical_chainStyle="packed">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_manuf_phone"
+                    android:id="@+id/edit_medicine_creator_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:digits="1234567890"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_manuf_address"
+                android:id="@+id/input_medicine_desc"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/small_margin"
-                android:hint="@string/manufacturer_address_hint"
+                android:hint="@string/medicine_description_hint"
                 app:errorEnabled="true"
-                app:layout_constraintBottom_toTopOf="@id/create_manuf_button"
-                app:layout_constraintTop_toBottomOf="@id/input_manuf_phone"
+                app:layout_constraintBottom_toTopOf="@id/create_medicine_button"
+                app:layout_constraintTop_toBottomOf="@id/input_medicine_creator_id"
                 app:layout_constraintVertical_chainStyle="packed">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_manuf_address"
+                    android:id="@+id/edit_medicine_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="1"
+                    android:scrollbars="vertical"
+                    android:lines="6"
+                    android:inputType="textMultiLine"
                     android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/create_manuf_button"
+                android:id="@+id/create_medicine_button"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/create_manufacturer_button"
+                android:text="@string/create_medicine_button"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/input_manuf_address" />
+                app:layout_constraintTop_toBottomOf="@id/input_medicine_desc" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

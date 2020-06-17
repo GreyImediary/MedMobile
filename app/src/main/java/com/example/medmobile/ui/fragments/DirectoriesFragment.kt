@@ -35,13 +35,7 @@ class DirectoriesFragment : BaseFragment() {
 
         requireActivity().toolbar.menu.clear()
 
-        users_button.setOnClickListener {
-            findNavController().navigate(R.id.action_DirectoriesFragment_to_usersFragment)
-        }
-
-        remedy_producers_button.setOnClickListener {
-            findNavController().navigate(R.id.action_DirectoriesFragment_to_manufacturerFragment)
-        }
+        setOnClickListeners()
 
         setRoleRestriction()
     }
@@ -51,6 +45,20 @@ class DirectoriesFragment : BaseFragment() {
             Role.DIRECTOR.name -> {
                 users_button.visible()
             }
+        }
+    }
+
+    override fun setOnClickListeners() {
+        users_button.setOnClickListener {
+            findNavController().navigate(R.id.action_DirectoriesFragment_to_usersFragment)
+        }
+
+        remedy_producers_button.setOnClickListener {
+            findNavController().navigate(R.id.action_DirectoriesFragment_to_manufacturerFragment)
+        }
+
+        remedies_button.setOnClickListener {
+            findNavController().navigate(R.id.action_DirectoriesFragment_to_medicineFragment)
         }
     }
 }
