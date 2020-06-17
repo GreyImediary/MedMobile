@@ -49,6 +49,10 @@
     <string name="manufacturer_address">Адрес: %s</string>
     <string name="manufacturer_phone">Телефон: %s</string>
 
+    <!--Medicine rv item strings-->
+    <string name="medicine_price">Цена: %f</string>
+    <string name="medicine_creator">Произовдитель: %s</string>
+
     <!--User creation fragment strings-->
     <string name="user_login_hint">Логин</string>
     <string name="user_login_error">Логин должен быть не менее 3 символов</string>
@@ -84,11 +88,36 @@
     <string name="create_manufacturer_button">Создать производителя</string>
     <string name="manufacturer_created_snackbar_text">%s успешно создан</string>
 
+    <!--Medicine creation fragment strings-->
+    <string name="medicine_title_hint">Название</string>
+    <string name="medicine_title_error">Введите название лекарства</string>
+
+    <string name="medicine_description_hint">Описание</string>
+    <string name="medicine_description_error">Введите описание лекарства</string>
+
+    <string name="medicine_price_hint">Цена</string>
+    <string name="medicine_price_error">Введите цену</string>
+
+    <string name="medicine_creator_id_hint">ID производителя</string>
+    <string name="medicine_creator_id_error">Введите ID производителя</string>
+
+    <string name="medicine_type_hint">Тип</string>
+    <string name="medicine_type_error">Введите тип лекарства</string>
+
+    <string name="create_medicine_button">Создать лекарство</string>
+    <string name="medicine_created_snackbar_text">Лекарство %s успешно создано</string>
+
     <array name="role_array">
         <item>DIRECTOR</item>
         <item>OPERATOR</item>
         <item>ACCOUNTANT</item>
         <item>SUPPLIER</item>
+    </array>
+
+    <array name="type_array">
+        <item>FREE</item>
+        <item>SPECIAL_STORAGE</item>
+        <item>BY_RECEIPT</item>
     </array>
 
 </resources>

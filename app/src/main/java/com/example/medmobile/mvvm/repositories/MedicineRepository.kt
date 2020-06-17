@@ -2,39 +2,39 @@ package com.example.medmobile.mvvm.repositories
 
 import android.accounts.NetworkErrorException
 import android.util.Log
-import com.example.medmobile.api.ManufacturerApi
+import com.example.medmobile.api.MedicineApi
 import com.example.medmobile.mvvm.model.DeleteResult
-import com.example.medmobile.mvvm.model.Manufacturer
+import com.example.medmobile.mvvm.model.Medicine
 import com.example.medmobile.mvvm.model.PageHelper
-import com.example.medmobile.mvvm.model.PostManufacturer
+import com.example.medmobile.mvvm.model.PostMedicine
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class ManufacturerRepository(private val api: ManufacturerApi, private val pageHelper: PageHelper) :
-    BaseCrudRepository<Manufacturer, PostManufacturer, DeleteResult> {
-
-    override suspend fun create(token: String, postModel: PostManufacturer): Manufacturer =
+class MedicineRepository(private val api: MedicineApi, private val pageHelper: PageHelper) :
+    BaseCrudRepository<Medicine, PostMedicine, DeleteResult> {
+    override suspend fun create(token: String, postModel: PostMedicine): Medicine =
         withContext(Dispatchers.IO) {
             try {
-                api.createManufacturer(token, postModel)
+                api.createMedicine(token, postModel)
             } catch (t: Throwable) {
-                Log.e("ManufacturerRepository", t.message ?: "no message")
-                throw IllegalArgumentException("Не удалось создать производителя. Проверьте введённые данные")
+                Log.e("MedicineRepository", t.message ?: "no message")
+                throw IllegalArgumentException("Не удалось создать лекарство. Проверьте введённые данные")
             }
         }
-    override suspend fun read(token: String): List<Manufacturer> =
+
+    override suspend fun read(token: String): List<Medicine> =
         withContext(Dispatchers.IO) {
             try {
                 when {
                     pageHelper.total == 0 -> {
-                        val pageData = api.manufacturers(token, offset = pageHelper.offset)
+                        val pageData = api.medicines(token, offset = pageHelper.offset)
                         pageHelper.total += pageData.total
                         pageHelper.currentSize += pageData.data.size
                         pageHelper.offset += 10
                         pageData.data
                     }
                     pageHelper.currentSize < pageHelper.total -> {
-                        val pageData = api.manufacturers(token, offset = pageHelper.offset)
+                        val pageData = api.medicines(token, offset = pageHelper.offset)
                         pageHelper.offset += 10
                         pageHelper.currentSize += pageData.data.size
                         pageData.data
@@ -45,16 +45,16 @@ class ManufacturerRepository(private val api: ManufacturerApi, private val pageH
                 }
 
             } catch (t: Throwable) {
-                Log.e("ManufacturerRepository", t.message ?: "no message")
+                Log.e("MedicineRepository", t.message ?: "no message")
                 throw NetworkErrorException("Не удалось получить список производителей")
             }
         }
 
-    override suspend fun readById(token: String, id: Int): Manufacturer = withContext(Dispatchers.IO) {
+    override suspend fun readById(token: String, id: Int): Medicine = withContext(Dispatchers.IO) {
         try {
-            api.manufacturerById(token, id)
+            api.medicineById(token, id)
         } catch (t: Throwable) {
-            Log.e("ManufacturerRepository", t.message ?: "no message")
+            Log.e("MedicineRepository", t.message ?: "no message")
             throw NetworkErrorException("Не удалось получить производителя")
         }
     }

@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class UserRepository(private val api: UserApi, private val pageHelper: PageHelper) :
-    BaseCrudRepository<User, PostUser> {
+    BaseCrudRepository<User, PostUser, User> {
 
     override suspend fun create(token: String, postModel: PostUser): User =
         withContext(Dispatchers.IO) {

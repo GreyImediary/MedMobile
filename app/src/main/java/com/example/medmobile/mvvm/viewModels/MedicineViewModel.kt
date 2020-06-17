@@ -5,26 +5,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.medmobile.mvvm.model.Manufacturer
-import com.example.medmobile.mvvm.model.PostManufacturer
-import com.example.medmobile.mvvm.repositories.ManufacturerRepository
+import com.example.medmobile.mvvm.model.Medicine
+import com.example.medmobile.mvvm.model.PostMedicine
+import com.example.medmobile.mvvm.repositories.MedicineRepository
 import kotlinx.coroutines.launch
 
-class ManufacturerViewModel(private val repository: ManufacturerRepository) : ViewModel(),
-    ViewModelCrud<Manufacturer, PostManufacturer> {
+class MedicineViewModel(private val repository: MedicineRepository) : ViewModel(), ViewModelCrud<Medicine, PostMedicine> {
 
-    val manufacturers: MutableLiveData<List<Manufacturer>> by lazy {
-        MutableLiveData<List<Manufacturer>>()
+    val medicines: MutableLiveData<List<Medicine>> by lazy {
+        MutableLiveData<List<Medicine>>()
     }
 
-    val manufacturerById: MutableLiveData<Manufacturer> by lazy {
-        MutableLiveData<Manufacturer>()
+    val medicineById: MutableLiveData<Medicine> by lazy {
+        MutableLiveData<Medicine>()
     }
 
-    val createdManufacturer: MutableLiveData<Manufacturer> by lazy {
-        MutableLiveData<Manufacturer>()
+    val createdMedicine: MutableLiveData<Medicine> by lazy {
+        MutableLiveData<Medicine>()
     }
 
-    val deletedManufacturer: MutableLiveData<String> by lazy {
+    val deletedMedicine: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
@@ -34,10 +34,10 @@ class ManufacturerViewModel(private val repository: ManufacturerRepository) : Vi
 
     fun resetHelper() = repository.resetPageHelper()
 
-    override fun create(token: String, postModel: PostManufacturer) {
+    override fun create(token: String, postModel: PostMedicine) {
         viewModelScope.launch {
             try {
-                createdManufacturer.value = repository.create(token, postModel)
+                createdMedicine.value = repository.create(token, postModel)
             } catch (e: IllegalArgumentException) {
                 errorMessage.value = e.message
             }
@@ -47,7 +47,7 @@ class ManufacturerViewModel(private val repository: ManufacturerRepository) : Vi
     override fun read(token: String) {
         viewModelScope.launch {
             try {
-                manufacturers.value = repository.read(token)
+                medicines.value = repository.read(token)
             } catch (e: NetworkErrorException) {
                 errorMessage.value = e.message
             }
@@ -57,7 +57,7 @@ class ManufacturerViewModel(private val repository: ManufacturerRepository) : Vi
     override fun readById(token: String, id: Int) {
         viewModelScope.launch {
             try {
-                manufacturerById.value = repository.readById(token, id)
+                medicineById.value = repository.readById(token, id)
             } catch (e: NetworkErrorException) {
                 errorMessage.value = e.message
             }
@@ -69,7 +69,7 @@ class ManufacturerViewModel(private val repository: ManufacturerRepository) : Vi
             try {
                 val result = repository.delete(token, id)
                 if (result.affected == 1) {
-                    deletedManufacturer.value = "Производитель удалён"
+                    deletedMedicine.value = "Лекарство удалено"
                 }
             } catch (e: NetworkErrorException) {
                 errorMessage.value = e.message
