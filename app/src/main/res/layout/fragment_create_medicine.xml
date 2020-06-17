@@ -124,7 +124,6 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:scrollbars="vertical"
-                    android:lines="6"
                     android:inputType="textMultiLine"
                     android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
