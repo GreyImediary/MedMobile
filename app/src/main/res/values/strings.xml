@@ -27,6 +27,9 @@
     <!--add menu string-->
     <string name="add_menu_title">Добавить</string>
 
+    <!--exit menu string-->
+    <string name="exit_menu_title">Выйти</string>
+
     <!--Fragment label-->
     <string name="users_label">Пользователи</string>
     <string name="create_user_label">Создание пользователя</string>
