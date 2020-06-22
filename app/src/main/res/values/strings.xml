@@ -55,6 +55,9 @@
     <!--Medicine rv item strings-->
     <string name="medicine_price">Цена: %f</string>
     <string name="medicine_creator">Произовдитель: %s</string>
+    
+    <!--Pharmacy rv item strings-->
+    <string name="pharmacy_supervisor">Управляющий: %s</string>
 
     <!--User creation fragment strings-->
     <string name="user_login_hint">Логин</string>
@@ -109,6 +112,17 @@
 
     <string name="create_medicine_button">Создать лекарство</string>
     <string name="medicine_created_snackbar_text">Лекарство %s успешно создано</string>
+
+
+    <!--Pharmacy creation fragment strings-->
+    <string name="pharmacy_supervisor_hint">Управляющий</string>
+    <string name="create_pharmacy_button">Создать аптеку</string>
+    <string name="pharmacy_created_snackbar_text">Аптека %s успешно создана</string>
+
+    <string name="pharmacy_name_error">Введите название аптеки</string>
+    <string name="pharmacy_address_error">Введите адрес аптеки</string>
+    <string name="pharmacy_phone_error">Введите телефон аптеки</string>
+    <string name="pharmacy_supervisor_error">Введите ФИО управляющего</string>
 
     <array name="role_array">
         <item>DIRECTOR</item>

@@ -2,10 +2,7 @@ package com.example.medmobile.di
 
 import com.example.medmobile.mvvm.model.PageHelper
 import com.example.medmobile.mvvm.repositories.*
-import com.example.medmobile.mvvm.viewModels.LogInViewModel
-import com.example.medmobile.mvvm.viewModels.ManufacturerViewModel
-import com.example.medmobile.mvvm.viewModels.MedicineViewModel
-import com.example.medmobile.mvvm.viewModels.UserViewModel
+import com.example.medmobile.mvvm.viewModels.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -23,4 +20,7 @@ val loginModule = module {
 
     single { MedicineRepository(get(), get()) }
     viewModel { MedicineViewModel(get()) }
+
+    single { PharmacyRepository(get(), get()) }
+    viewModel { PharmacyViewModel(get()) }
 }

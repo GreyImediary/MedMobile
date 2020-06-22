@@ -1,9 +1,6 @@
 package com.example.medmobile.di
 
-import com.example.medmobile.api.LogInApi
-import com.example.medmobile.api.ManufacturerApi
-import com.example.medmobile.api.MedicineApi
-import com.example.medmobile.api.UserApi
+import com.example.medmobile.api.*
 import com.example.medmobile.di.RetrofitProperties.BASE_URL
 import okhttp3.OkHttpClient
 import org.koin.core.qualifier.named
@@ -65,6 +62,14 @@ val apiModule = module {
 
     single {
         createApi<MedicineApi>(
+            get(named(BASE_URL)),
+            get(),
+            get()
+        )
+    }
+
+    single {
+        createApi<PharmacyApi>(
             get(named(BASE_URL)),
             get(),
             get()

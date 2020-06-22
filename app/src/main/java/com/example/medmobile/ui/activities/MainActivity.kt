@@ -14,6 +14,7 @@ import com.example.medmobile.constants.USER_ID_EXTRA
 import com.example.medmobile.mvvm.viewModels.UserViewModel
 import com.example.medmobile.toast
 import com.example.medmobile.ui.activities.baseActivity.BaseActivity
+import com.example.medmobile.ui.fragments.DirectoriesFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,20 +27,27 @@ class MainActivity : BaseActivity() {
 
         observeLiveData()
 
+        val userId = intent.getIntExtra(USER_ID_EXTRA, 0)
+
+        viewModel.getCurrentUser(prefs.getString(TOKEN_PREF, "")!!, userId)
+
         val navController = findNavController(R.id.nav_fragment)
         val appBarConfiguration = AppBarConfiguration(navController.graph, drawer_layout)
         nav_view.setupWithNavController(navController)
         toolbar.setupWithNavController(navController, appBarConfiguration)
-
-        val userId = intent.getIntExtra(USER_ID_EXTRA, 0)
-
-        viewModel.getCurrentUser(prefs.getString(TOKEN_PREF, "")!!, userId)
     }
 
     override fun observeLiveData() {
         viewModel.currentUser.observe(this, Observer {
             prefs.edit {
                 putString(ROLE_PREF, it.role)
+            }
+
+            val navHost = supportFragmentManager.findFragmentById(R.id.nav_fragment)
+            val fragment = navHost?.childFragmentManager?.fragments?.get(0)
+
+            if (fragment != null && fragment is DirectoriesFragment) {
+                fragment.setRoleRestriction()
             }
         })
 

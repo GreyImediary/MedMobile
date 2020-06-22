@@ -46,6 +46,10 @@ class DirectoriesFragment : BaseFragment() {
         super.onStart()
         setRoleRestriction()
 
+        requireActivity().toolbar.apply {
+            menu.clear()
+            inflateMenu(R.menu.menu_exit)
+        }
     }
 
     override fun setRoleRestriction() {
@@ -83,6 +87,10 @@ class DirectoriesFragment : BaseFragment() {
 
         remedies_button.setOnClickListener {
             findNavController().navigate(R.id.action_DirectoriesFragment_to_medicineFragment)
+        }
+
+        pharmacies_button.setOnClickListener {
+            findNavController().navigate(R.id.action_DirectoriesFragment_to_pharmacyFragment)
         }
     }
 }

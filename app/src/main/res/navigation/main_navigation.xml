@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_DirectoriesFragment_to_medicineFragment"
             app:destination="@id/medicineFragment" />
+        <action
+            android:id="@+id/action_DirectoriesFragment_to_pharmacyFragment"
+            app:destination="@id/pharmacyFragment" />
     </fragment>
     <fragment
         android:id="@+id/PurchaseFragment"
@@ -78,4 +81,16 @@
         android:id="@+id/createMedicineFragment"
         android:name="com.example.medmobile.ui.fragments.CreateMedicineFragment"
         android:label="CreateMedicineFragment" />
+    <fragment
+        android:id="@+id/pharmacyFragment"
+        android:name="com.example.medmobile.ui.fragments.PharmacyFragment"
+        android:label="PharmacyFragment" >
+        <action
+            android:id="@+id/action_pharmacyFragment_to_createPharmacyFragment"
+            app:destination="@id/createPharmacyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPharmacyFragment"
+        android:name="com.example.medmobile.ui.fragments.CreatePharmacyFragment"
+        android:label="CreatePharmacyFragment" />
 </navigation>
