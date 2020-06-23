@@ -2,6 +2,7 @@ package com.example.medmobile
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -28,4 +29,12 @@ fun View.gone() {
 
 fun View.visible() {
     visibility = View.VISIBLE
+}
+
+fun MenuItem.visible() {
+    isVisible = true
+}
+
+fun MenuItem.invisible() {
+    isVisible = false
 }
