@@ -23,4 +23,7 @@ val loginModule = module {
 
     single { PharmacyRepository(get(), get()) }
     viewModel { PharmacyViewModel(get()) }
+
+    single { MedicineRequestRepository(get(), get()) }
+    viewModel { MedicineRequestViewModel(get()) }
 }
