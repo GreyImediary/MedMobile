@@ -26,4 +26,7 @@ val loginModule = module {
 
     single { MedicineRequestRepository(get(), get()) }
     viewModel { MedicineRequestViewModel(get()) }
+
+    single { SupplyRepository(get(), get()) }
+    viewModel { SupplyViewModel(get()) }
 }

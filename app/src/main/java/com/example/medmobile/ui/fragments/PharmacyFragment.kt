@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.medmobile.R
 import com.example.medmobile.constants.TOKEN_PREF
 import com.example.medmobile.mvvm.viewModels.PharmacyViewModel
+import com.example.medmobile.toast
 import com.example.medmobile.ui.adapters.PharmacyAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_pharmacy.*
@@ -66,6 +67,10 @@ class PharmacyFragment : BaseFragment() {
         viewModel.pharmacies.observe(viewLifecycleOwner, Observer {
             pharmacyAdapter.pharmacies += it
             pharmacyAdapter.notifyDataSetChanged()
+        })
+
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
+            context?.toast(it)
         })
     }
 

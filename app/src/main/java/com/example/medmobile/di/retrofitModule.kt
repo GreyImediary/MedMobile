@@ -83,4 +83,12 @@ val apiModule = module {
             get()
         )
     }
+
+    single {
+        createApi<SupplyApi>(
+            get(named(BASE_URL)),
+            get(),
+            get()
+        )
+    }
 }

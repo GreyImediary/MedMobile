@@ -44,7 +44,11 @@
     <fragment
         android:id="@+id/SupplyFragment"
         android:name="com.example.medmobile.ui.fragments.SupplyFragment"
-        android:label="@string/main_menu_supply" />
+        android:label="@string/main_menu_supply" >
+        <action
+            android:id="@+id/action_SupplyFragment_to_createSupplyFragment"
+            app:destination="@id/createSupplyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/AccountingFragment"
         android:name="com.example.medmobile.ui.fragments.AccountingFragment"
@@ -101,4 +105,8 @@
         android:id="@+id/createMedicineRequestFragment"
         android:name="com.example.medmobile.ui.fragments.CreateMedicineRequestFragment"
         android:label="CreateMedicineRequestFragment" />
+    <fragment
+        android:id="@+id/createSupplyFragment"
+        android:name="com.example.medmobile.ui.fragments.CreateSupplyFragment"
+        android:label="CreateSupplyFragment" />
 </navigation>
