@@ -3,28 +3,28 @@ package com.example.medmobile.api
 import com.example.medmobile.mvvm.model.*
 import retrofit2.http.*
 
-interface MedicineApi {
-    @GET("/medicine")
-    suspend fun medicines(
+interface MedicineRequestApi {
+    @GET("/medicine_request")
+    suspend fun medicineRequests(
         @Header("Authorization") token: String,
         @Query("limit") limit: Int = 10,
         @Query("offset") offset: Int,
         @Query("sort") sort: String = "{\"id\":\"ASC\"}"
-    ): PageData<Medicine>
+    ): PageData<MedicineRequest>
 
-    @GET("/medicine/{id}")
-    suspend fun medicineById(
+    @GET("/medicine_request/{id}")
+    suspend fun medicineRequestById(
         @Header("Authorization") token: String,
         @Path("id") id: Int
-    ): Medicine
+    ): MedicineRequest
 
-    @POST("/medicine")
-    suspend fun createMedicine(
+    @POST("/medicine_request")
+    suspend fun createMedicineRequest(
         @Header("Authorization") token: String,
-        @Body postMedicine: PostMedicine
-    ): Medicine
+        @Body postMedicine: PostMedicineRequest
+    ): MedicineRequest
 
-    @POST("/medicine/{id}")
+    @POST("/medicine_request/{id}")
     suspend fun delete(
         @Header("Authorization") token: String,
         @Path("id") id: Int

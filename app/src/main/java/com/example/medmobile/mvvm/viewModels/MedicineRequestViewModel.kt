@@ -5,25 +5,27 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.medmobile.mvvm.model.Medicine
-import com.example.medmobile.mvvm.model.PostMedicine
-import com.example.medmobile.mvvm.repositories.MedicineRepository
+import com.example.medmobile.mvvm.model.MedicineRequest
+import com.example.medmobile.mvvm.model.PostMedicineRequest
+import com.example.medmobile.mvvm.repositories.MedicineRequestRepository
 import kotlinx.coroutines.launch
 
-class MedicineViewModel(private val repository: MedicineRepository) : ViewModel(), ViewModelCrud<Medicine, PostMedicine> {
+class MedicineRequestViewModel(private val repository: MedicineRequestRepository) : ViewModel(),
+    ViewModelCrud<MedicineRequest, PostMedicineRequest> {
 
-    val medicines: MutableLiveData<List<Medicine>> by lazy {
-        MutableLiveData<List<Medicine>>()
+    val medicineRequests: MutableLiveData<List<MedicineRequest>> by lazy {
+        MutableLiveData<List<MedicineRequest>>()
     }
 
-    val medicineById: MutableLiveData<Medicine> by lazy {
-        MutableLiveData<Medicine>()
+    val medicineRequestById: MutableLiveData<MedicineRequest> by lazy {
+        MutableLiveData<MedicineRequest>()
     }
 
-    val createdMedicine: MutableLiveData<Medicine> by lazy {
-        MutableLiveData<Medicine>()
+    val createdMedicineRequest: MutableLiveData<MedicineRequest> by lazy {
+        MutableLiveData<MedicineRequest>()
     }
 
-    val deletedMedicine: MutableLiveData<String> by lazy {
+    val deletedMedicineRequest: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
@@ -33,10 +35,10 @@ class MedicineViewModel(private val repository: MedicineRepository) : ViewModel(
 
     fun resetHelper() = repository.resetPageHelper()
 
-    override fun create(token: String, postModel: PostMedicine) {
+    override fun create(token: String, postModel: PostMedicineRequest) {
         viewModelScope.launch {
             try {
-                createdMedicine.value = repository.create(token, postModel)
+                createdMedicineRequest.value = repository.create(token, postModel)
             } catch (e: IllegalArgumentException) {
                 errorMessage.value = e.message
             }
@@ -46,7 +48,7 @@ class MedicineViewModel(private val repository: MedicineRepository) : ViewModel(
     override fun read(token: String) {
         viewModelScope.launch {
             try {
-                medicines.value = repository.read(token)
+                medicineRequests.value = repository.read(token)
             } catch (e: NetworkErrorException) {
                 errorMessage.value = e.message
             }
@@ -56,7 +58,7 @@ class MedicineViewModel(private val repository: MedicineRepository) : ViewModel(
     override fun readById(token: String, id: Int) {
         viewModelScope.launch {
             try {
-                medicineById.value = repository.readById(token, id)
+                medicineRequestById.value = repository.readById(token, id)
             } catch (e: NetworkErrorException) {
                 errorMessage.value = e.message
             }
@@ -68,7 +70,7 @@ class MedicineViewModel(private val repository: MedicineRepository) : ViewModel(
             try {
                 val result = repository.delete(token, id)
                 if (result.affected == 1) {
-                    deletedMedicine.value = "Лекарство удалено"
+                    deletedMedicineRequest.value = "Лекарство удалено"
                 }
             } catch (e: NetworkErrorException) {
                 errorMessage.value = e.message

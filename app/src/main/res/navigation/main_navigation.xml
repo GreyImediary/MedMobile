@@ -21,11 +21,18 @@
         <action
             android:id="@+id/action_DirectoriesFragment_to_medicineFragment"
             app:destination="@id/medicineFragment" />
+        <action
+            android:id="@+id/action_DirectoriesFragment_to_pharmacyFragment"
+            app:destination="@id/pharmacyFragment" />
     </fragment>
     <fragment
         android:id="@+id/PurchaseFragment"
         android:name="com.example.medmobile.ui.fragments.PurchaseFragment"
-        android:label="@string/main_menu_purchase" />
+        android:label="@string/main_menu_purchase" >
+        <action
+            android:id="@+id/action_PurchaseFragment_to_createMedicineRequestFragment"
+            app:destination="@id/createMedicineRequestFragment" />
+    </fragment>
     <fragment
         android:id="@+id/SalesToPharmacyFragment"
         android:name="com.example.medmobile.ui.fragments.SalesToPharmacyFragment"
@@ -37,7 +44,11 @@
     <fragment
         android:id="@+id/SupplyFragment"
         android:name="com.example.medmobile.ui.fragments.SupplyFragment"
-        android:label="@string/main_menu_supply" />
+        android:label="@string/main_menu_supply" >
+        <action
+            android:id="@+id/action_SupplyFragment_to_createSupplyFragment"
+            app:destination="@id/createSupplyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/AccountingFragment"
         android:name="com.example.medmobile.ui.fragments.AccountingFragment"
@@ -78,4 +89,24 @@
         android:id="@+id/createMedicineFragment"
         android:name="com.example.medmobile.ui.fragments.CreateMedicineFragment"
         android:label="CreateMedicineFragment" />
+    <fragment
+        android:id="@+id/pharmacyFragment"
+        android:name="com.example.medmobile.ui.fragments.PharmacyFragment"
+        android:label="PharmacyFragment" >
+        <action
+            android:id="@+id/action_pharmacyFragment_to_createPharmacyFragment"
+            app:destination="@id/createPharmacyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPharmacyFragment"
+        android:name="com.example.medmobile.ui.fragments.CreatePharmacyFragment"
+        android:label="CreatePharmacyFragment" />
+    <fragment
+        android:id="@+id/createMedicineRequestFragment"
+        android:name="com.example.medmobile.ui.fragments.CreateMedicineRequestFragment"
+        android:label="CreateMedicineRequestFragment" />
+    <fragment
+        android:id="@+id/createSupplyFragment"
+        android:name="com.example.medmobile.ui.fragments.CreateSupplyFragment"
+        android:label="CreateSupplyFragment" />
 </navigation>

@@ -10,27 +10,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.medmobile.R
 import com.example.medmobile.constants.TOKEN_PREF
-import com.example.medmobile.mvvm.viewModels.MedicineViewModel
+import com.example.medmobile.mvvm.viewModels.PharmacyViewModel
 import com.example.medmobile.toast
-import com.example.medmobile.ui.adapters.MedicineAdapter
+import com.example.medmobile.ui.adapters.PharmacyAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_medicine.*
+import kotlinx.android.synthetic.main.fragment_pharmacy.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MedicineFragment : BaseFragment() {
-    private val viewModel: MedicineViewModel by viewModel()
-    private lateinit var medicineAdapter: MedicineAdapter
+class PharmacyFragment : BaseFragment() {
+    private val viewModel: PharmacyViewModel by viewModel()
+    private lateinit var pharmacyAdapter: PharmacyAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_medicine, null)
+        return inflater.inflate(R.layout.fragment_pharmacy, null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        medicineAdapter = MedicineAdapter()
+        pharmacyAdapter = PharmacyAdapter()
 
         requireActivity().toolbar.apply {
             menu.clear()
@@ -42,12 +42,12 @@ class MedicineFragment : BaseFragment() {
 
         val token = prefs.getString(TOKEN_PREF, "") ?: ""
 
-        rv_medicine.apply {
-            adapter = medicineAdapter
+        rv_pharmacies.apply {
+            adapter = pharmacyAdapter
             layoutManager = LinearLayoutManager(context)
         }
 
-        rv_medicine.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        rv_pharmacies.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
 
@@ -57,17 +57,16 @@ class MedicineFragment : BaseFragment() {
             }
         })
 
-
-        if(medicineAdapter.medicines.isEmpty()) {
+        if(pharmacyAdapter.pharmacies.isEmpty()) {
             viewModel.resetHelper()
         }
         viewModel.read(token)
     }
 
     override fun observeLiveData() {
-        viewModel.medicines.observe(viewLifecycleOwner, Observer {
-            medicineAdapter.medicines += it
-            medicineAdapter.notifyDataSetChanged()
+        viewModel.pharmacies.observe(viewLifecycleOwner, Observer {
+            pharmacyAdapter.pharmacies += it
+            pharmacyAdapter.notifyDataSetChanged()
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
@@ -79,7 +78,7 @@ class MedicineFragment : BaseFragment() {
         requireActivity().toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.menu_add_item -> {
-                    findNavController().navigate(R.id.action_medicineFragment_to_createMedicineFragment)
+                    findNavController().navigate(R.id.action_pharmacyFragment_to_createPharmacyFragment)
                     true
                 }
                 else -> true
