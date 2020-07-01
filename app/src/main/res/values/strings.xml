@@ -147,6 +147,8 @@
     <string name="sell_production_date">Дата изготовления: %s</string>
     <string name="sell_invoice_id">ID накладной: %d</string>
     <string name="sell_shelf_life">Срок годности(мес): %d</string>
+    <string name="pharm_sell_check_id">ID чека: %d</string>
+    <string name="pharm_sell_client">Аптека клиент: %s</string>
 
     <array name="role_array">
         <item>DIRECTOR</item>

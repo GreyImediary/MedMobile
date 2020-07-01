@@ -99,4 +99,12 @@ val apiModule = module {
             get()
         )
     }
+
+    single {
+        createApi<PharmSellsApi>(
+            get(named(BASE_URL)),
+            get(),
+            get()
+        )
+    }
 }

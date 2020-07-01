@@ -32,4 +32,7 @@ val loginModule = module {
 
     single { SellsRepository(get(), get()) }
     viewModel { SellsViewModel(get()) }
+
+    single { PharmSellsRepository(get(), get()) }
+    viewModel { PharmSellsViewModel(get()) }
 }
