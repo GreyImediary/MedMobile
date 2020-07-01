@@ -91,4 +91,12 @@ val apiModule = module {
             get()
         )
     }
+
+    single {
+        createApi<SellsApi>(
+            get(named(BASE_URL)),
+            get(),
+            get()
+        )
+    }
 }

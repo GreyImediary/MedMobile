@@ -29,4 +29,7 @@ val loginModule = module {
 
     single { SupplyRepository(get(), get()) }
     viewModel { SupplyViewModel(get()) }
+
+    single { SellsRepository(get(), get()) }
+    viewModel { SellsViewModel(get()) }
 }
