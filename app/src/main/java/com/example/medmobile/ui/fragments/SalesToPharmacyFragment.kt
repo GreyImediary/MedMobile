@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.medmobile.R
@@ -63,6 +64,20 @@ class SalesToPharmacyFragment : BaseFragment() {
             viewModel.resetHelper()
         }
         viewModel.read(token)
+    }
+
+    override fun setOnClickListeners() {
+        super.setOnClickListeners()
+
+        requireActivity().toolbar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_add_item -> {
+                    findNavController().navigate(R.id.action_SalesToPharmacyFragment_to_createSellFragment)
+                    true
+                }
+                else -> true
+            }
+        }
     }
 
     override fun observeLiveData() {

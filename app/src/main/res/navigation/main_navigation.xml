@@ -36,11 +36,19 @@
     <fragment
         android:id="@+id/SalesToPharmacyFragment"
         android:name="com.example.medmobile.ui.fragments.SalesToPharmacyFragment"
-        android:label="@string/main_menu_sales_to_pharmacy" />
+        android:label="@string/main_menu_sales_to_pharmacy" >
+        <action
+            android:id="@+id/action_SalesToPharmacyFragment_to_createSellFragment"
+            app:destination="@id/createSellFragment" />
+    </fragment>
     <fragment
         android:id="@+id/SalesByPharmacyFragment"
         android:name="com.example.medmobile.ui.fragments.SalesByPharmacyFragment"
-        android:label="@string/main_menu_sales_by_pharmacy" />
+        android:label="@string/main_menu_sales_by_pharmacy" >
+        <action
+            android:id="@+id/action_SalesByPharmacyFragment_to_createPharmSellFragment"
+            app:destination="@id/createPharmSellFragment" />
+    </fragment>
     <fragment
         android:id="@+id/SupplyFragment"
         android:name="com.example.medmobile.ui.fragments.SupplyFragment"
@@ -76,11 +84,11 @@
     <fragment
         android:id="@+id/createManufacturerFragment"
         android:name="com.example.medmobile.ui.fragments.CreateManufacturerFragment"
-        android:label="CreateManufacturerFragment" />
+        android:label="Создать производителя" />
     <fragment
         android:id="@+id/medicineFragment"
         android:name="com.example.medmobile.ui.fragments.MedicineFragment"
-        android:label="MedicineFragment" >
+        android:label="Лекарства" >
         <action
             android:id="@+id/action_medicineFragment_to_createMedicineFragment"
             app:destination="@id/createMedicineFragment" />
@@ -88,11 +96,11 @@
     <fragment
         android:id="@+id/createMedicineFragment"
         android:name="com.example.medmobile.ui.fragments.CreateMedicineFragment"
-        android:label="CreateMedicineFragment" />
+        android:label="Создать лекарство" />
     <fragment
         android:id="@+id/pharmacyFragment"
         android:name="com.example.medmobile.ui.fragments.PharmacyFragment"
-        android:label="PharmacyFragment" >
+        android:label="Аптеки" >
         <action
             android:id="@+id/action_pharmacyFragment_to_createPharmacyFragment"
             app:destination="@id/createPharmacyFragment" />
@@ -100,13 +108,21 @@
     <fragment
         android:id="@+id/createPharmacyFragment"
         android:name="com.example.medmobile.ui.fragments.CreatePharmacyFragment"
-        android:label="CreatePharmacyFragment" />
+        android:label="Создать аптеку" />
     <fragment
         android:id="@+id/createMedicineRequestFragment"
         android:name="com.example.medmobile.ui.fragments.CreateMedicineRequestFragment"
-        android:label="CreateMedicineRequestFragment" />
+        android:label="Создать заявку" />
     <fragment
         android:id="@+id/createSupplyFragment"
         android:name="com.example.medmobile.ui.fragments.CreateSupplyFragment"
-        android:label="CreateSupplyFragment" />
+        android:label="Создать заявку на снабжение" />
+    <fragment
+        android:id="@+id/createSellFragment"
+        android:name="com.example.medmobile.ui.fragments.CreateSellFragment"
+        android:label="Создать покупку" />
+    <fragment
+        android:id="@+id/createPharmSellFragment"
+        android:name="com.example.medmobile.ui.fragments.CreatePharmSellFragment"
+        android:label="Создать покупку" />
 </navigation>
