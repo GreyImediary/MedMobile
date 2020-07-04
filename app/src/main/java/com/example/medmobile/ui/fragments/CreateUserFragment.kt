@@ -56,6 +56,14 @@ class CreateUserFragment : BaseFragment() {
             }
 
             snackbar.show()
+
+            edit_user_login.text?.clear()
+            edit_user_password.text?.clear()
+            edit_user_name.text?.clear()
+            edit_user_phone.text?.clear()
+            edit_user_role.text?.clear()
+
+            hideKeyboard()
         })
     }
 

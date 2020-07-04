@@ -60,6 +60,11 @@ class CreateMedicineRequestFragment : BaseFragment() {
             }
 
             snackbar.show()
+
+            edit_request_id.text?.clear()
+            edit_request_quantity.text?.clear()
+
+            hideKeyboard()
         })
     }
 

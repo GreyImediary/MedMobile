@@ -58,6 +58,13 @@ class CreateManufacturerFragment : BaseFragment() {
             }
 
             snackbar.show()
+
+            edit_manuf_name.text?.clear()
+            edit_manuf_inn.text?.clear()
+            edit_manuf_phone.text?.clear()
+            edit_manuf_address.text?.clear()
+
+            hideKeyboard()
         })
     }
 
