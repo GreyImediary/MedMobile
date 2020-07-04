@@ -71,6 +71,14 @@ class CreateMedicineFragment : BaseFragment() {
             }
 
             snackbar.show()
+
+            edit_medicine_title.text?.clear()
+            edit_medicine_price.text?.clear()
+            edit_medicine_type.text?.clear()
+            edit_medicine_creator_id.text?.clear()
+            edit_medicine_desc.text?.clear()
+
+            hideKeyboard()
         })
     }
 

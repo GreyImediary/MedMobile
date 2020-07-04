@@ -9,6 +9,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.medmobile.R
+import com.example.medmobile.constants.ROLE_PREF
+import com.example.medmobile.constants.Role
 import com.example.medmobile.constants.TOKEN_PREF
 import com.example.medmobile.mvvm.viewModels.PharmSellsViewModel
 import com.example.medmobile.toast
@@ -36,7 +38,11 @@ class SalesByPharmacyFragment : BaseFragment() {
 
         requireActivity().toolbar.apply {
             menu.clear()
-            inflateMenu(R.menu.menu_add)
+            val role = prefs.getString(ROLE_PREF, "") ?: ""
+
+            if (role != Role.ACCOUNTANT.name) {
+                inflateMenu(R.menu.menu_add)
+            }
         }
 
         setOnClickListeners()

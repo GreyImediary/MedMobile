@@ -69,6 +69,8 @@ class CreatePharmacyFragment : BaseFragment() {
             edit_pharmacy_address.text?.clear()
             edit_pharmacy_phone.text?.clear()
             edit_pharmacy_supervisor.text?.clear()
+
+            hideKeyboard()
         })
     }
 

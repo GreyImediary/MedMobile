@@ -63,6 +63,13 @@ class CreatePharmSellFragment : BaseFragment() {
 
             snackbar.show()
 
+            edit_check_id.text?.clear()
+            edit_medicine_id.text?.clear()
+            edit_pharmacy_id.text?.clear()
+            edit_quantity.text?.clear()
+            edit_sell_date.text?.clear()
+
+            hideKeyboard()
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {

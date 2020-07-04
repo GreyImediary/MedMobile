@@ -21,6 +21,7 @@
     <item
         android:id="@+id/AccountingFragment"
         android:title="@string/main_menu_accounting"
+        android:visible="false"
         android:contentDescription="@string/main_menu_accounting"
         />
 

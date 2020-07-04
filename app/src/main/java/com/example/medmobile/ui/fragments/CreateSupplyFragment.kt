@@ -55,6 +55,8 @@ class CreateSupplyFragment : BaseFragment() {
             snackbar.show()
 
             edit_supply_positions?.text?.clear()
+
+            hideKeyboard()
         })
     }
 
